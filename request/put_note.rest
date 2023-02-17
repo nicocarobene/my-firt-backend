@@ -1,0 +1,7 @@
+PUT  http://localhost:3001/api/notes/63ef6399e14dfc0d5a900e65
+Content-Type: application/json
+
+{
+    "content":"Modificando nota de DB en nicoDB",
+    "important": true
+}
