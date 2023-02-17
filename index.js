@@ -53,7 +53,7 @@ app.post('/api/notes', (request, response) => {
   const note = request.body
   if (!note || !note.content) {
     return response.status(400).json({
-      error: 'note.content is missing',
+      error: 'note.content is missing'
     })
   }
   const ids = notes.map((note) => note.id)
@@ -62,21 +62,20 @@ app.post('/api/notes', (request, response) => {
     id: maxIds + 1,
     content: note.content,
     important: typeof note.important !== 'undefined' ? note.important : false,
-    date: new Date().toISOString(),
+    date: new Date().toISOString()
   }
   notes = [...notes, newNote]
   response.status(201).json(newNote)
 })
 
-app.use((request, response)=>{
+app.use((request, response) => {
   response.status(404).json({
     error: 'not found'
   })
-  console.log(request.path)
-  
-})
+  console.log(request.path) })
 
-const PORT = 3001
+const PORT = process.env.PORT || 3001
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
